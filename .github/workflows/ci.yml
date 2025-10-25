@@ -5,8 +5,8 @@ on:
     branches: [main]
 
 jobs:
-  tests:
-    - name: Tests
+  - tests:
+      name: Tests
       runs-on: ubuntu-latest
 
       steps:
@@ -21,7 +21,8 @@ jobs:
         - name: Runs go unit tests
           run: go test -cover ./...
 
-    - name: Style
+  - tests:
+      name: Style
       runs-on: ubuntu-latest
 
       steps:
