@@ -16,7 +16,7 @@ jobs:
       - name: Set up go
         uses: actions/setup-go@v5
         with:
-          go-verion: "1.25.1"
+          go-version: "1.25.1"
 
       - name: Builds the binary
         run: ./scripts/buildprod.sh
