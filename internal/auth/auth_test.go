@@ -15,7 +15,7 @@ func TestGetAIPKey(t *testing.T) {
 		{
 			name: "Valid Header",
 			header: http.Header{"Authorization": []string{"ApiKey secret"}},
-			expectErr: false,
+			expectErr: true,
 			expectedApiKey: "secret",
 		},
 		{
