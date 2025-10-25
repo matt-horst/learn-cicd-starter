@@ -6,34 +6,34 @@ import (
 )
 
 func TestGetAIPKey(t *testing.T) {
-	cases := [] struct {
-		name string
-		header http.Header
-		expectErr bool
+	cases := []struct {
+		name           string
+		header         http.Header
+		expectErr      bool
 		expectedApiKey string
-	} {
+	}{
 		{
-			name: "Valid Header",
-			header: http.Header{"Authorization": []string{"ApiKey secret"}},
-			expectErr: false,
+			name:           "Valid Header",
+			header:         http.Header{"Authorization": []string{"ApiKey secret"}},
+			expectErr:      false,
 			expectedApiKey: "secret",
 		},
 		{
-			name: "Missing Authorization",
-			header: http.Header{},
-			expectErr: true,
+			name:           "Missing Authorization",
+			header:         http.Header{},
+			expectErr:      true,
 			expectedApiKey: "",
 		},
 		{
-			name: "Missing ApiKey key",
-			header: http.Header{"Authorization": []string{}},
-			expectErr: true,
+			name:           "Missing ApiKey key",
+			header:         http.Header{"Authorization": []string{}},
+			expectErr:      true,
 			expectedApiKey: "",
 		},
 		{
-			name: "Missing ApiKey value",
-			header: http.Header{"Authorization": []string{"ApiKey"}},
-			expectErr: true,
+			name:           "Missing ApiKey value",
+			header:         http.Header{"Authorization": []string{"ApiKey"}},
+			expectErr:      true,
 			expectedApiKey: "",
 		},
 	}
@@ -45,7 +45,7 @@ func TestGetAIPKey(t *testing.T) {
 				t.Errorf("Expected err == %v, but got %v", c.expectErr, err)
 			}
 
-			if (apiKey != c.expectedApiKey) {
+			if apiKey != c.expectedApiKey {
 				t.Errorf("Expected apiKey = %v, but got %v", c.expectedApiKey, apiKey)
 			}
 		})
